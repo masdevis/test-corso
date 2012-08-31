@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    public function getLastestPost()
+    {
+        return $this->getEntityManager()
+                ->createQuery("SELECT p FROM IdeatoBlogBundle:Post p ORDER BY p.publicationDate DESC")
+                ->getResult();
+    }
+    
+    public function gePostByAuthorId()
+    {
+        $q = $this->createQueryBuilder('p')
+                ->where('p.title = :title')
+                ->orderBy('p.publicationDate');
+        $q->setParameter("title","Post title #0");
+    }
 }
