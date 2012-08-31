@@ -1,6 +1,6 @@
 {% extends 'IdeatoBlogBundle::layout.html.twig' %}
 {% block content %}
-    <div>
+    <div id="post_list">
     {% for post in posts %}
             <h1>{{ post.title }}</h1>
             <h2>publication date: {{ post.publicationDate | date}}</h2>
