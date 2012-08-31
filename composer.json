@@ -15,7 +15,8 @@
 
     "autoload": {
         "psr-0": {
-            "Acme": "src/"
+            "Acme": "src/",
+            "Ideato": "src/"
         }
     }
 }
