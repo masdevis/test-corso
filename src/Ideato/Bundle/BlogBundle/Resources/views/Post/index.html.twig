@@ -1,9 +1,12 @@
 {% extends 'IdeatoBlogBundle::layout.html.twig' %}
 {% block content %}
     <div id="post_list">
+        <a style="float:right;" href="{{path("new_post")}}">Inserisci un nuovo post</a>
     {% for post in posts %}
             <h1>{{ post.title }}</h1>
-            <h2>publication date: {{ post.publicationDate | date}}</h2>
+            <h2>publication date: {{ post.publicationDate | date}}
+            by {{ post.author.name }}
+            </h2>
             <h4>{{ post.content }}</h4>
     {% endfor %}
     </div>
