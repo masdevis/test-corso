@@ -24,7 +24,7 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-        $posts = array();
+        $posts = $this->getDoctrine()->getRepository('Ideato\Bundle\BlogBundle\Entity\Post')->findAll();
         return array('posts' => $posts);
     }
     
