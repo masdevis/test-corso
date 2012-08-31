@@ -10,7 +10,7 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface {
     
     public function getOrder() 
     {
-        return 1;
+        return 2;
     }
 
     public function load(ObjectManager $em) 
@@ -21,8 +21,14 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface {
             $post->setTitle("Post title #".$i);
             $post->setContent(" #".$i." lorem ipsum bla bla");
             $post->setPublicationDate(new \DateTime('-'.$i.' days'));
-            //$posts[] = $post;
-            
+
+            if($i<3)
+                $post->setAuthor ($this->getReference ('cirpo'));
+            elseif($i>=3 && $i<7)
+                $post->setAuthor ($this->getReference ('devis'));
+            else
+                $post->setAuthor ($this->getReference ('marco'));
+
             $em->persist($post);
         }
         $em->flush();

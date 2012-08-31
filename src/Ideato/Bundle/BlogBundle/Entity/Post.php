@@ -3,6 +3,7 @@
 namespace Ideato\Bundle\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ideato\Bundle\BlogBundle\Entity\Author;
 
 /**
  * Ideato\Bundle\BlogBundle\Entity\Post
@@ -41,7 +42,13 @@ class Post
      * @ORM\Column(name="publicationDate", type="datetime")
      */
     private $publicationDate;
-
+    
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="Ideato\Bundle\BlogBundle\Entity\Author", inversedBy="post", cascade={"persist"})
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $author;
 
     /**
      * Get id
@@ -112,4 +119,15 @@ class Post
     {
         return $this->publicationDate;
     }
+
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(Author $author)
+    {
+        return $this->author = $author;
+    }
+
 }
